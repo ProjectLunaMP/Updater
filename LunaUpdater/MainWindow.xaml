@@ -1,0 +1,24 @@
+﻿<ui:FluentWindow x:Class="LunaUpdater.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LunaUpdater"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="340" Loaded="FluentWindow_Loaded" Background="#1b1b1c" Width="567" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Luna_New.png">
+    <Grid Background="#1b1b1c">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        <ui:TitleBar ShowMaximize="False" Grid.ColumnSpan="2">
+
+        </ui:TitleBar>
+        <ContentPresenter x:Name="RootContentDialog" Grid.Row="0" Grid.ColumnSpan="2" />
+        <ui:TextBlock x:Name="MainTextBlock" Margin="69,144,56,143" Text="Unknown" TextAlignment="Center" FontSize="24" FontFamily="Segoe UI Black" Foreground="White" Grid.ColumnSpan="2"/>
+        <ProgressBar x:Name="ProcessBarFr" Width="500" Height="25" Margin="34,248,33,51" Value="40" Grid.ColumnSpan="2"  />
+
+        <ui:TextBlock x:Name="MainTextBlockPer" Margin="69,181,56,106" TextAlignment="Center" FontSize="24" FontFamily="Segoe UI Black" Foreground="White" Text="" Grid.ColumnSpan="2"/>
+    </Grid>
+</ui:FluentWindow>

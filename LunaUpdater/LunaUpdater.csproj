@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	<PlatformTarget>x64</PlatformTarget>
+    <ApplicationManifest>LunaUpdater.manifest</ApplicationManifest>
+	<ApplicationIcon>Luna_New.ico</ApplicationIcon>
+	<Configurations>Debug;Release;Public_DEV</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Luna_New.png" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="WPF-UI" Version="3.0.3" />
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <Resource Include="Luna_New.png" />
+  </ItemGroup>
+
+</Project>
