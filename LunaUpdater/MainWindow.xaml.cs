@@ -138,8 +138,8 @@ namespace LunaUpdater
                                     }
                                 }
 
-                                MainTextBlock.Text = "Downloading Launcher";
-                                var LauncherExe = "Luna.exe";
+                                MainTextBlock.Text = "Downloading Launcher Setup";
+                                var LauncherExe = "Luna-Setup.exe";
                                 await Task.Run(async () => await DownloadAndRun($"{launcherJson.Launcher}", Path.Combine(DataFolder, "LunaLauncher.zip"), "Luna Launcher", yaNO, false));
                                 
                                 ProcessBarFr.IsIndeterminate = true;
@@ -196,82 +196,6 @@ namespace LunaUpdater
                                 await Task.Run(async () => File.Delete(Path.Combine(DataFolder, "LunaLauncher.zip")));
 
                                 MainTextBlock.Text = "Setting up a few things";
-
-                                await Task.Run(() =>
-                                {
-                                    string DesktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                                    string userProfileFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                                    string StatupProgams = Path.Combine(userProfileFolder, "AppData", "Roaming", "Microsoft", "Windows", "Start Menu", "Programs");
-
-                                    try
-                                    {
-                                        string StatupProgams1 = Path.Combine(StatupProgams, "Luna", "Luna" + ".lnk");
-                                        Directory.CreateDirectory(Path.Combine(StatupProgams, "Luna"));
-                                        string DesktopFolderPath1 = Path.Combine(DesktopFolderPath, "Luna" + ".lnk");
-
-                                        if (!File.Exists(StatupProgams1))
-                                        {
-
-                                            var shellType = Type.GetTypeFromProgID("WScript.Shell");
-                                            dynamic shell = Activator.CreateInstance(shellType);
-                                            //string escapedFolderPath = Uri.EscapeDataString(DataFolder);
-
-                                            var shortcut = shell.CreateShortcut(StatupProgams1);
-                                            shortcut.TargetPath = Path.Combine(DataFolder1, LauncherExe);
-                                            shortcut.WorkingDirectory = DataFolder1;
-                                            shortcut.Save();
-                                        }
-
-                                        if (!File.Exists(DesktopFolderPath1))
-                                        {
-                                            var shellType = Type.GetTypeFromProgID("WScript.Shell");
-                                            dynamic shell = Activator.CreateInstance(shellType);
-                      
-                                            var shortcut = shell.CreateShortcut(DesktopFolderPath1);
-                                            shortcut.TargetPath = Path.Combine(DataFolder1, LauncherExe);
-                                            shortcut.WorkingDirectory = DataFolder1;
-                                            shortcut.Save();
-                                        }
-
-
-                                        try
-                                        {
-                                            using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall", true))
-                                            {
-                                                if (key != null)
-                                                {
-                                                    string PATHGOGMMGO = Path.Combine(DataFolder1, LauncherExe);
-                                                    string Uninstall = "";
-                                                    //System.Windows.MessageBox.Show(Process.GetCurrentProcess().MainModule.FileName);
-                                                    Application.Current.Dispatcher.Invoke(() =>
-                                                    {
-                                                        Uninstall = Process.GetCurrentProcess().MainModule.FileName + " -uninstall";
-                                                    });
-
-                                                    using (RegistryKey appKey = key.CreateSubKey("LunaLauncher"))
-                                                    {
-                                                        appKey.SetValue("DisplayName", "Luna");
-                                                        appKey.SetValue("DisplayIcon", PATHGOGMMGO);
-                                                        appKey.SetValue("DisplayVersion", launcherJson.UpdaterVersion);
-                                                        appKey.SetValue("Publisher", "Luna");
-                                                        appKey.SetValue("InstallLocation", PATHGOGMMGO);
-                                                        appKey.SetValue("UninstallString", Uninstall);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-
-                                        }
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        System.Windows.MessageBox.Show("ERROR SAVING SHORTCUTS! " + ex.Message);
-                                    }
-                                });
-
 
                                 Process process = new Process();
                                 process.StartInfo.FileName = Path.Combine(DataFolder1, LauncherExe);
