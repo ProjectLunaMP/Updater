@@ -199,6 +199,7 @@ namespace LunaUpdater
 
                                 Process process = new Process();
                                 process.StartInfo.FileName = Path.Combine(DataFolder1, LauncherExe);
+                                process.StartInfo.Verb = "runas";
                                 process.Start();
                                 Application.Current.Shutdown();
                             }
