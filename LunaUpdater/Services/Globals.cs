@@ -11,9 +11,9 @@ namespace LunaUpdater.Services
 #if RELEASE
         public static string LauncherApi { get; set; } = "https://launcher.lunafn.org";
 #else
-        public static string LauncherApi { get; set; } = "http://127.0.0.1:1211";
+        public static string LauncherApi { get; set; } = "http://127.0.0.1:1111";
 #endif
-        public static string LauncherInfoEndpoint { get; set; } = "/launcher/info";
+        public static string LauncherInfoEndpoint { get; set; } = "/launcher/api/v1/version";
 
         public static string LauncherVersion { get; set; } = "0.0.1";
         public static string UpdaterVersion { get; set; } = "0.0.3"; // doesnt change much

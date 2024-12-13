@@ -8,9 +8,9 @@ namespace LunaUpdater.Services
 {
     public class LauncherJson
     {
-        public string updater { get; set; } = string.Empty;
-        public string launcher { get; set; } = string.Empty;
-        public string launcherversion { get; set; } = string.Empty;
-        public string updaterversion { get; set; } = string.Empty;
+        public string Updater { get; set; } = string.Empty;
+        public string Launcher { get; set; } = string.Empty;
+        public string LauncherVersion { get; set; } = string.Empty;
+        public string UpdaterVersion { get; set; } = string.Empty;
     }
 }

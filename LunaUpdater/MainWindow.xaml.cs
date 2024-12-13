@@ -104,7 +104,7 @@ namespace LunaUpdater
                         {
                             LauncherJson launcherJson = JsonConvert.DeserializeObject<LauncherJson>(Info)!;
 
-                            if (launcherJson.updaterversion == Globals.UpdaterVersion)
+                            if (launcherJson.UpdaterVersion == Globals.UpdaterVersion)
                             {
                                 ProcessBarFr.IsIndeterminate = false;
                                 string[] yaNO = new string[]
@@ -140,7 +140,7 @@ namespace LunaUpdater
 
                                 MainTextBlock.Text = "Downloading Launcher";
                                 var LauncherExe = "Luna.exe";
-                                await Task.Run(async () => await DownloadAndRun($"{launcherJson.launcher}", Path.Combine(DataFolder, "LunaLauncher.zip"), "Luna Launcher", yaNO, false));
+                                await Task.Run(async () => await DownloadAndRun($"{launcherJson.Launcher}", Path.Combine(DataFolder, "LunaLauncher.zip"), "Luna Launcher", yaNO, false));
                                 
                                 ProcessBarFr.IsIndeterminate = true;
 
@@ -252,7 +252,7 @@ namespace LunaUpdater
                                                     {
                                                         appKey.SetValue("DisplayName", "Luna");
                                                         appKey.SetValue("DisplayIcon", PATHGOGMMGO);
-                                                        appKey.SetValue("DisplayVersion", launcherJson.launcherversion);
+                                                        appKey.SetValue("DisplayVersion", launcherJson.UpdaterVersion);
                                                         appKey.SetValue("Publisher", "Luna");
                                                         appKey.SetValue("InstallLocation", PATHGOGMMGO);
                                                         appKey.SetValue("UninstallString", Uninstall);
