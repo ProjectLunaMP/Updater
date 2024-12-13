@@ -1,5 +1,7 @@
 const express = require("express");
 const application = express();
+const fs = require("fs")
+const path = require("path");
 
 application.listen(3000, () => {
   console.log("LauncherCDN on port " + 3000); // this isnt a actual CDN ;(
